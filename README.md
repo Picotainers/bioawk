@@ -1,5 +1,5 @@
 # bioawk
-Small, distroless-when-possible container for `bioawk`.
+Small compatibility-focused container for `bioawk`.
 
 ## how to use
 ```bash

@@ -1,4 +1,4 @@
-name: Build and Publish Distroless bioawk
+name: Build and Publish bioawk
 
 on:
   push:
