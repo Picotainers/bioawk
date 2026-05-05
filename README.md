@@ -1,7 +1,18 @@
 # bioawk
 Small compatibility-focused container for `bioawk`.
 
-## how to use
+## Quick Usage
+
 ```bash
-docker run --rm -v "$(pwd):/data" picotainers/bioawk:latest --help
+# Pull the image
+docker pull docker.io/picotainers/bioawk:latest
+
+# Run the tool
+docker run --rm docker.io/picotainers/bioawk:latest bioawk --help
+```
+
+## How to use
+
+```bash
+docker run --rm -v "$(pwd):/data" docker.io/picotainers/bioawk:latest --help
 ```
