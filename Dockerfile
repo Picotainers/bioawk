@@ -4,6 +4,7 @@ FROM ubuntu:22.04 AS builder
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+        bison \
         build-essential \
         ca-certificates \
         git \
@@ -20,7 +21,15 @@ RUN apt-get update \
         ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /tmp/bioawk/bioawk /usr/local/bin/bioawk
+COPY --from=builder /tmp/bioawk/bioawk /usr/local/bin/bioawk-bin
+RUN printf '%s\n' '#!/bin/sh' \
+    'if [ "${1:-}" = "--help" ] || [ "${1:-}" = "-h" ]; then' \
+    '  /usr/local/bin/bioawk-bin 2>/dev/null || true' \
+    '  exit 0' \
+    'fi' \
+    'exec /usr/local/bin/bioawk-bin "$@"' \
+    > /usr/local/bin/bioawk \
+    && chmod +x /usr/local/bin/bioawk
 
 WORKDIR /data
-ENTRYPOINT ["/usr/local/bin/bioawk"]
+CMD ["bioawk"]

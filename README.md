@@ -14,5 +14,5 @@ docker run --rm docker.io/picotainers/bioawk:latest bioawk --help
 ## How to use
 
 ```bash
-docker run --rm -v "$(pwd):/data" docker.io/picotainers/bioawk:latest --help
+docker run --rm -v "$(pwd):/data" docker.io/picotainers/bioawk:latest bioawk --help
 ```
